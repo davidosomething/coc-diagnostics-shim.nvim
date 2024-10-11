@@ -53,10 +53,10 @@ M.convert_to_vim_diagnostic = function(buffer, linter_name, loclist)
     diagnostics[i] = {
       -- (`integer`) Buffer number
       bufnr = buffer,
-      lnum = item.lnum,
-      end_lnum = item.lnum,
-      col = item.col,
-      end_col = item.end_col,
+      lnum = item.lnum - 1,
+      end_lnum = item.lnum - 1,
+      col = item.col - 1,
+      end_col = item.end_col - 1,
       severity = vim.diagnostic.severity[item.type],
       message = format(linter_name, item),
       source = linter_name,
