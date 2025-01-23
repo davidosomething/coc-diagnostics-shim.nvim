@@ -50,13 +50,17 @@ M.convert_to_vim_diagnostic = function(buffer, linter_name, loclist)
   local ns = vim.api.nvim_create_namespace(("aleshim--%s"):format(linter_name))
   local diagnostics = {}
   for i, item in ipairs(loclist) do
+    local col = math.min(item.col, item.end_col) - 1
+    local end_col = math.max(item.col, item.end_col) - 1
+    local lnum = math.min(item.lnum, item.end_lnum) - 1
+    local end_lnum = math.max(item.lnum, item.end_lnum) - 1
     diagnostics[i] = {
       -- (`integer`) Buffer number
       bufnr = buffer,
-      lnum = item.lnum - 1,
-      end_lnum = item.lnum - 1,
-      col = item.col - 1,
-      end_col = item.end_col,
+      lnum = lnum,
+      end_lnum = end_lnum,
+      col = col,
+      end_col = end_col,
       severity = vim.diagnostic.severity[item.type],
       message = format(linter_name, item),
       source = linter_name,
