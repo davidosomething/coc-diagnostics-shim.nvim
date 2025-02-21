@@ -1,5 +1,7 @@
 # coc-diagnostics-shim.nvim
 
+**PLUGIN IS ARCHIVED** in favor of `diagnostic.displayByVimDiagnostic` [https://github.com/neoclide/coc.nvim/pull/5236]
+
 This neovim plugin provides
 [ale#other_source#ShowResults](https://github.com/neoclide/coc.nvim/blob/master/src/diagnostic/buffer.ts#L40)
 so [coc.nvim](https://github.com/neoclide/coc.nvim)
